@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "755574010889",
+    "project_id": "srishti-app-fcad1",
+    "storage_bucket": "srishti-app-fcad1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:755574010889:android:813fdd981d23acb58574d8",
+        "android_client_info": {
+          "package_name": "com.srishti.sda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "755574010889-clbem552pbahivkpnm31objjt3jnhv3t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.srishti.sda",
+            "certificate_hash": "701ea24871b58400e678581e88069a971d71d045"
+          }
+        },
+        {
+          "client_id": "755574010889-gq5155r6ce4qurr7re4bq4h57b9d6pqj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeqVS44O_3Y5H-KlR8oeQAjK-nSZpRDf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755574010889-gq5155r6ce4qurr7re4bq4h57b9d6pqj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
