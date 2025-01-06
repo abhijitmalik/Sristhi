@@ -20,6 +20,7 @@ class EmailRegistrationActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
+        //github push
 
         val backButton = findViewById<ImageButton>(R.id.backButton)
         val usernameInput = findViewById<TextInputEditText>(R.id.usernameInput)
