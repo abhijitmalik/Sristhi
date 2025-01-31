@@ -15,39 +15,44 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Srishti_App"
         tools:targetApi="35">
-        
+        <activity
+            android:name=".UserProfile"
+            android:exported="false" />
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
         <activity
             android:name=".SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.Srishti_App.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".GoogleSignInActivity"
+            android:exported="false" />
         <activity
             android:name=".AuthActivity"
             android:exported="false"
             android:theme="@style/Theme.Srishti_App.NoActionBar" />
-
         <activity
             android:name=".LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.Srishti_App.NoActionBar" />
-
         <activity
             android:name=".CategoryPickerActivity"
             android:exported="false"
             android:theme="@style/Theme.Srishti_App.NoActionBar" />
-
         <activity
             android:name=".EmailRegistrationActivity"
             android:exported="false"
             android:theme="@style/Theme.Srishti_App.NoActionBar" />
     </application>
+
 </manifest>
