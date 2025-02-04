@@ -71,7 +71,7 @@ class EmailRegistrationActivity : AppCompatActivity() {
                                 showToast("Registration successful!")
                                /* startActivity(Intent(this, CategoryPickerActivity::class.java))
                                 finish()*/
-
+                                
                             }
                             .addOnFailureListener { e ->
                                 showToast("Error saving user: ${e.message}")

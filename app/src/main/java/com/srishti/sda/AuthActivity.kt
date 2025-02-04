@@ -26,7 +26,10 @@ class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
-
+        val backButton = findViewById<ImageButton>(R.id.backButton)
+        val loginButton = findViewById<TextView>(R.id.loginButton)
+        val googleSignInButton = findViewById<MaterialButton>(R.id.googleSignInButton)
+        val emailSignInButton = findViewById<MaterialButton>(R.id.emailSignInButton)
         // Configure Google Sign-In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
@@ -34,19 +37,16 @@ class AuthActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         // Initialize views
-        val backButton = findViewById<ImageButton>(R.id.backButton)
-        val loginButton = findViewById<TextView>(R.id.loginButton)
-        val googleSignInButton = findViewById<MaterialButton>(R.id.googleSignInButton)
-        val emailSignInButton = findViewById<MaterialButton>(R.id.emailSignInButton)
+
 
         // Set click listeners
         backButton.setOnClickListener {
             finish()
         }
 
-        /*loginButton.setOnClickListener {
+        loginButton.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
-        }*/
+        }
 
         googleSignInButton.setOnClickListener {
             // TODO: Implement Google Sign-in
@@ -54,9 +54,9 @@ class AuthActivity : AppCompatActivity() {
 
         }
 
-        /*emailSignInButton.setOnClickListener {
+        emailSignInButton.setOnClickListener {
             startActivity(Intent(this, EmailRegistrationActivity::class.java))
-        }*/
+        }
     }
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent

@@ -38,9 +38,12 @@ class LoginActivity : AppCompatActivity() {
         }
 
         emailSignInButton.setOnClickListener {
-            // TODO: Navigate to email login screen
-            Toast.makeText(this, "Email login coming soon", Toast.LENGTH_SHORT).show()
+            supportFragmentManager.beginTransaction()
+                .replace(android.R.id.content, LoginFragment())
+                .addToBackStack(null)
+                .commit()
         }
+
 
         resetPasswordButton.setOnClickListener {
             // TODO: Navigate to password reset screen
