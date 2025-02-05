@@ -115,7 +115,7 @@ class AuthActivity : AppCompatActivity() {
         editor.apply()
 
         // Navigate to Next Activity
-     val Intent = Intent(this, UserProfile::class.java)
+     val Intent = Intent(this, MainActivity::class.java)
         startActivity(Intent)
 
     }

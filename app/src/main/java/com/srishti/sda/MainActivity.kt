@@ -3,9 +3,14 @@ package com.srishti.sda
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.srishti.sda.adapter.BookAdapter
+import com.srishti.sda.fragment.HomeFragment
+import com.srishti.sda.fragment.ProfileFragment
+import com.srishti.sda.fragment.UploadFragment
+import com.srishti.sda.fragments.CatagoryFragment
 import com.srishti.sda.model.Book
 
 class MainActivity : AppCompatActivity() {
@@ -13,11 +18,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setupRecyclerViews()
+      //  setupRecyclerViews()
+
+
+        loadFragment(HomeFragment())
         setupBottomNavigation()
+
+      //  setupBottomNavigation()
+
     }
 
-    private fun setupRecyclerViews() {
+   /* private fun setupRecyclerViews() {
         // Sample data - Replace with actual data from your backend
         val topChoiceBooks = listOf(
             Book("1", "Book 1", "Author 1", "url1", "Fiction"),
@@ -52,9 +63,31 @@ class MainActivity : AppCompatActivity() {
             BookAdapter(trendingSeriesBooks) { book ->
                 Toast.makeText(this, "Selected: ${book.title}", Toast.LENGTH_SHORT).show()
             }
-    }
+    }*/
 
     private fun setupBottomNavigation() {
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> loadFragment(HomeFragment())
+                R.id.nav_search -> loadFragment(CatagoryFragment())
+                R.id.nav_library -> loadFragment(ProfileFragment())
+                R.id.nav_profile -> loadFragment(UploadFragment())
+            }
+            true
+        }
+    }
+    private fun loadFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
+    }
+
+
+
+
+    /*private fun setupBottomNavigation() {
         findViewById<BottomNavigationView>(R.id.bottomNavigation).setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> true
@@ -73,5 +106,5 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-    }
+    }*/
 }

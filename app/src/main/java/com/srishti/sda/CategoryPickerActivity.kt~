@@ -40,9 +40,6 @@ class CategoryPickerActivity : AppCompatActivity() {
 
 
 
-
-
-
        /* Category("children", "Children", R.drawable.ic_children),
         Category("biographies", "Biographies", R.drawable.ic_biography),
         Category("crime", "Crime", R.drawable.ic_crime),
