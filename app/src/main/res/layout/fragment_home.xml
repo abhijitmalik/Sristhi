@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:background="@color/white">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="home Fragment"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
-</LinearLayout>
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.srishti.sda.viewModel.StoryViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".HomeFragment">
+
+        <include
+            android:id="@+id/top_bar"
+            layout="@layout/top_bar_lay" />
+
+        <include
+            android:id="@+id/lay_search"
+            layout="@layout/search_lay" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:paddingHorizontal="@dimen/_7mdp"
+            android:id="@+id/rv_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/category_item"/>
+    </LinearLayout>
+</layout>

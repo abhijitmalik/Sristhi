@@ -67,6 +67,15 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.google.firebase:firebase-auth:23.1.0")
     implementation ("com.google.android.gms:play-services-auth:21.3.0")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+//    implementation(libs.kotlinx.coroutines.core)
+
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
+    implementation("com.github.MrNouri:DynamicSizes:1.0")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 //app testing
 
 }
