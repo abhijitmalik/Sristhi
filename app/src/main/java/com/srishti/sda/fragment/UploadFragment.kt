@@ -24,6 +24,7 @@ import java.util.Date
 import java.util.Locale
 
 class UploadFragment : Fragment() {
+    //update
     private lateinit var emailInput: TextInputEditText
     private lateinit var categoryDropdown: AutoCompleteTextView
     private lateinit var storyInput: TextInputEditText
