@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -15,6 +16,9 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.firestore.FirebaseFirestore
 import com.srishti.sda.R
+import com.srishti.sda.model.StoryDataModel
+import com.srishti.sda.utils.Constants
+import com.srishti.sda.utils.Helper
 import java.security.SecureRandom
 import java.util.Date
 import java.util.Locale
@@ -25,7 +29,6 @@ class UploadFragment : Fragment() {
     private lateinit var storyInput: TextInputEditText
     private lateinit var submitButton: MaterialButton
     private lateinit var feedbackText: TextView
-    private lateinit var db: FirebaseFirestore
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,10 +40,7 @@ class UploadFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
-        // Initialize Firebase
-        db = FirebaseFirestore.getInstance()
-        
+
         // Initialize views
 
         val sharedPref = requireActivity().getSharedPreferences("UserPrefs", MODE_PRIVATE)
@@ -55,7 +55,25 @@ class UploadFragment : Fragment() {
         feedbackText = view.findViewById(R.id.feedbackText)
 
         // Setup category dropdown
-        val categories = arrayOf(  "Children","Biographies","Crime","Business & Business","Erotica","Non-Fiction","Fantasy & SciFi","History","Classics","Poetry","Short Stories","Development","Fiction","Language","Thrillers","Teens & Young Adult","Romance","Religion"
+        val categories = arrayOf(
+            "Children",
+            "Biographies",
+            "Crime",
+            "Business & Business",
+            "Erotica",
+            "Non-Fiction",
+            "Fantasy & SciFi",
+            "History",
+            "Classics",
+            "Poetry",
+            "Short Stories",
+            "Development",
+            "Fiction",
+            "Language",
+            "Thrillers",
+            "Teens & Young Adult",
+            "Romance",
+            "Religion"
         )
         val adapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, categories)
         categoryDropdown.setAdapter(adapter)
@@ -71,9 +89,9 @@ class UploadFragment : Fragment() {
         val email = emailInput.text.toString()
         val category = categoryDropdown.text.toString()
         val story = storyInput.text.toString()
-        val date = getCurrentDate()
-        val id = generateRandomId()
-        val author= userName
+        val date = Helper.getCurrentDate()
+        val id = Helper.generateRandomId()
+        val author = userName
 
         if (email.isEmpty() || category.isEmpty() || story.isEmpty()) {
             showFeedback("Please fill in all fields", false)
@@ -85,30 +103,35 @@ class UploadFragment : Fragment() {
             return
         }
 
-        val storyData = hashMapOf(
-            "email" to email,
-            "category" to category,
-            "story" to story,
-            "posted" to  date,
-            "likes" to 0,
-            "id" to id,
-            "author" to author
+//        val storyData = hashMapOf(
+//            "email" to email,
+//            "category" to category,
+//            "story" to story,
+//            "posted" to  date,
+//            "likes" to 0,
+//            "id" to id,
+//            "author" to author
+//        )
 
-
-        )
+        val storyData =
+            author?.let { StoryDataModel(email, category, story, date, 0.toString(), id, it) }
 
         submitButton.isEnabled = false
-        
-        db.collection("stories")
-            .add(storyData)
-            .addOnSuccessListener {
-                showFeedback("Story submitted successfully!", true)
-                clearInputs()
-            }
-            .addOnFailureListener { e ->
-                showFeedback("Error: ${e.message}", false)
-                submitButton.isEnabled = true
-            }
+
+        if (storyData != null) {
+            Constants.db.collection("stories")
+                .add(storyData)
+                .addOnSuccessListener {
+                    showFeedback("Story submitted successfully!", true)
+                    clearInputs()
+                }
+                .addOnFailureListener { e ->
+                    showFeedback("Error: ${e.message}", false)
+                    submitButton.isEnabled = true
+                }
+        } else {
+            Toast.makeText(context, "No Data Found", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun showFeedback(message: String, isSuccess: Boolean) {
@@ -123,17 +146,6 @@ class UploadFragment : Fragment() {
             )
             visibility = View.VISIBLE
         }
-    }
-    fun getCurrentDate(): String {
-        val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        return sdf.format(Date())
-    }
-    fun generateRandomId(): String {
-        val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-        val random = SecureRandom()
-        return (1..6)
-            .map { chars[random.nextInt(chars.length)] }
-            .joinToString("")
     }
 
     private fun clearInputs() {

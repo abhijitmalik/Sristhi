@@ -72,7 +72,7 @@ public class HomeFragment : Fragment() {
 
         binding.rvCategory.adapter = adapter
         draggableLayout = binding.laySearch.searchCard
-        draggableLayout.visibility=View.GONE
+        draggableLayout.visibility = View.GONE
         draggableLayout.setOnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {

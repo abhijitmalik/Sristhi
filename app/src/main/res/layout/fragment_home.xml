@@ -29,7 +29,12 @@
             android:paddingHorizontal="@dimen/_7mdp"
             android:id="@+id/rv_category"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/category_item"/>
+            android:layout_height="wrap_content"/>
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_marginTop="@dimen/_6mdp"
+            android:layout_marginBottom="@dimen/_3mdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </LinearLayout>
 </layout>
