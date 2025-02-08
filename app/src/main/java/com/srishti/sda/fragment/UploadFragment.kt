@@ -25,7 +25,7 @@ import com.srishti.sda.utils.Helper.Companion.showPopUp
 import com.srishti.sda.viewModel.StoryViewModel
 
 class UploadFragment : Fragment() {
-    //update
+    //update modify
 //    private lateinit var emailInput: TextInputEditText
 //    private lateinit var categoryDropdown: AutoCompleteTextView
 //    private lateinit var storyInput: TextInputEditText
