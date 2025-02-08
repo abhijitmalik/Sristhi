@@ -5,6 +5,10 @@
     <color name="splash_background">#FFF8F3</color>
     <color name="primary_text">#2D3436</color>
     <color name="secondary_text">#636E72</color>
-    <color name="orange">#FF5722</color>
+    <color name="orange">#CDFF5722</color>
+    <color name="green">#32CCBE</color>
+    <color name="green_light">#75DCD3</color>
+    <color name="orange_light">#DB7657</color>
     <color name="chip_unchecked">#1AFFFFFF</color>
+
 </resources>

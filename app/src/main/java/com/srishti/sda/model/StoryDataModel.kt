@@ -2,7 +2,6 @@ package com.srishti.sda.model
 
 data class StoryDataModel(
     var email: String = "",
-    var category: String = "",
     var story: String = "",
     var posted: String = "",
     var likes: String = "",

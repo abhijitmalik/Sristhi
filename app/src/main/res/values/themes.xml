@@ -7,6 +7,8 @@
 
     <style name="Theme.Srishti_App" parent="Base.Theme.Srishti_App" >
         <item name="android:statusBarColor">@android:color/darker_gray</item>
+        <item name="colorPrimary">@color/orange</item>
+        <item name="colorSecondary">@color/green</item>
     </style>
 
     <style name="Theme.Srishti_App.NoActionBar" parent="Theme.Srishti_App">
