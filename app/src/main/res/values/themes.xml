@@ -10,7 +10,9 @@
         <item name="colorPrimary">@color/orange</item>
         <item name="colorSecondary">@color/green</item>
     </style>
-
+<!--    <style name="Widget.FAB.Custom" parent="Widget.MaterialComponents.FloatingActionButton">-->
+<!--        <item name="android:tint">@color/black</item> &lt;!&ndash; Change to your icon color &ndash;&gt;-->
+<!--    </style>-->
     <style name="Theme.Srishti_App.NoActionBar" parent="Theme.Srishti_App">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

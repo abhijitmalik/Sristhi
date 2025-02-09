@@ -18,9 +18,9 @@
         <activity
             android:name=".UserProfile"
             android:exported="false" />
-        <activity
-            android:name=".Profile"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".Profile"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".SplashActivity"
             android:exported="true"

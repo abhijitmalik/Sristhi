@@ -1,6 +1,7 @@
 package com.srishti.sda.utils
 
 import android.annotation.SuppressLint
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class Constants {
@@ -28,5 +29,7 @@ class Constants {
             "Romance",
             "Religion"
         )
+
+        val auth: FirebaseAuth=FirebaseAuth.getInstance()
     }
 }
