@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+    <TextView
+        android:id="@+id/tv_storyHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/_1mdp"
+        android:paddingHorizontal="@dimen/_6mdp"
+        android:text="@string/science_frixtion"
+        android:textSize="@dimen/_14font_mdp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textStyle="bold"
+        android:fontFamily="@font/heavy"/>
+    <View
+        android:id="@+id/v1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2mdp"
+        android:layout_marginHorizontal="@dimen/_10mdp"
+        android:layout_alignStart="@id/tv_storyHeader"
+        android:layout_alignEnd="@id/tv_storyHeader"
+        android:layout_below="@id/tv_storyHeader"
+        android:background="@color/secondary_text"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_story_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v1"
+        android:layout_marginVertical="@dimen/_3mdp"
+        android:layout_marginHorizontal="@dimen/_4mdp"
+        tools:listitem="@layout/story_lay"/>
+
+
+</RelativeLayout>

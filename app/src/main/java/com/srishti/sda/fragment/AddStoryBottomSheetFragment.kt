@@ -98,16 +98,14 @@ class AddStoryBottomSheetFragment : BottomSheetDialogFragment() {
         val userName = sharedPref.getString("user_name", "No Name") as String
 
         val storyData =
-            userName.let {
-                StoryDataModel(
-                    email = binding.emailInput.text.toString(),
-                    story = binding.storyInput.text.toString(),
-                    posted = getCurrentDate(),
-                    likes = 0.toString(),
-                    id = id.toString(),
-                    author = it
-                )
-            }
+            StoryDataModel(
+                email = binding.emailInput.text.toString(),
+                story = binding.storyInput.text.toString(),
+                posted = getCurrentDate(),
+                likes = 0.toString(),
+                id = id.toString(),
+                author = userName
+            )
 
         binding.submitButton.isEnabled = false
 

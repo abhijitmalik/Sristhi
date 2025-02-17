@@ -53,6 +53,10 @@
             android:name=".EmailRegistrationActivity"
             android:exported="false"
             android:theme="@style/Theme.Srishti_App.NoActionBar" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

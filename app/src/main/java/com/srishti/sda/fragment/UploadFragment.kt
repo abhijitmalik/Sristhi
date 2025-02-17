@@ -3,6 +3,7 @@ package com.srishti.sda.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,10 @@ import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.srishti.sda.R
+import com.srishti.sda.adapter.CategoryAdapter
+import com.srishti.sda.adapter.StoryCategoryAdapter
 import com.srishti.sda.databinding.FragmentUploadBinding
 import com.srishti.sda.model.StoryDataModel
 import com.srishti.sda.utils.Constants.Companion.categories
@@ -52,156 +56,36 @@ class UploadFragment : Fragment() {
         val sharedPref = requireActivity().getSharedPreferences("UserPrefs", MODE_PRIVATE)
         val userName = sharedPref.getString("user_name", "No Name")
         val userEmail = sharedPref.getString("user_email", "No Email")
-        binding.emailInput.setText(userEmail)
 
 
-        // Observe Upload Status
-        viewModel.uploadStatus.observe(viewLifecycleOwner) { result ->
-            result.onSuccess {
-                context?.let {
-                    it.getDrawable(R.drawable.ic_success)?.let { it1 ->
-                        showPopUp(
-                            context = it,
-                            icon = it1,
-                            animation = 0,
-                            messsage = "Story uploaded successfully!",
-                            intentActivity = null
-                        )
-                    }
-                }
+        binding.rvCategoryStory.layoutManager = LinearLayoutManager(requireContext())
 
-                clearInputFields(
-                    arrayOf(
-                        binding.categoryDropdown,
-                        binding.storyInput
-                    )
-                )
+        // Observe ViewModel Data
+        viewModel.categoriesWithStories.observe(viewLifecycleOwner) { categories ->
+            if (categories.isNotEmpty()) {
+                binding.rvCategoryStory.adapter = StoryCategoryAdapter(categories, requireContext())
+            } else {
+                Toast.makeText(context, "Unable to show details", Toast.LENGTH_SHORT).show()
 
-            }.onFailure {
-                val msg: String = it.message.toString()
-                context?.let {
-                    it.getDrawable(R.drawable.ic_fail)?.let { it1 ->
-                        showPopUp(
-                            context = it,
-                            icon = it1,
-                            animation = 0,
-                            messsage = "Failed: ${msg}",
-                            intentActivity = null
-                        )
-                    }
-                }
             }
-            binding.submitButton.isEnabled = true
         }
 
-//        emailInput = view.findViewById(R.id.emailInput)
-//        emailInput.setText(userEmail)
-//        categoryDropdown = view.findViewById(R.id.categoryDropdown)
-//        storyInput = view.findViewById(R.id.storyInput)
-//        submitButton = view.findViewById(R.id.submitButton)
-//        feedbackText = view.findViewById(R.id.feedbackText)
+        // Observe Errors
+        viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
+            Log.d("Error", errorMessage)
+            Toast.makeText(context, "Unable to show details", Toast.LENGTH_SHORT).show()
 
-        val adapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, categories)
-        binding.categoryDropdown.setAdapter(adapter)
+        }
+
+        // Fetch data from Firestore
+        viewModel.fetchAllCategoriesWithStories()
 
         binding.btnAdd.setOnClickListener {
             val bottomSheet = AddStoryBottomSheetFragment()
             bottomSheet.show(parentFragmentManager, bottomSheet.tag)
         }
 
-        binding.submitButton.setOnClickListener {
-            if (checkInputFields(
-                    arrayOf(
-                        binding.emailInput,
-                        binding.categoryDropdown,
-                        binding.storyInput
-                    )
-                )
-            ) {
-                submitStory()
-            }
-        }
     }
 
-    private fun submitStory() {
-        val sharedPref = requireActivity().getSharedPreferences("UserPrefs", MODE_PRIVATE)
-        val userName = sharedPref.getString("user_name", "No Name") as String
-//        val email = emailInput.text.toString()
-//        val category = categoryDropdown.text.toString()
-//        val story = storyInput.text.toString()
-//        val date = Helper.getCurrentDate()
-//        val id = Helper.generateRandomId()
-//        val author = userName
-//
-//        if (email.isEmpty() || category.isEmpty() || story.isEmpty()) {
-//            showFeedback("Please fill in all fields", false)
-//            return
-//        }
-//
-//        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-//            showFeedback("Please enter a valid email address", false)
-//            return
-//        }
 
-//        val storyData = hashMapOf(
-//            "email" to email,
-//            "category" to category,
-//            "story" to story,
-//            "posted" to  date,
-//            "likes" to 0,
-//            "id" to id,
-//            "author" to author
-//        )
-
-        val storyData =
-            userName.let {
-                StoryDataModel(
-                    email = binding.emailInput.text.toString(),
-                    story = binding.storyInput.text.toString(),
-                    posted = getCurrentDate(),
-                    likes = 0.toString(),
-                    id = id.toString(),
-                    author = it
-                )
-            }
-
-        binding.submitButton.isEnabled = false
-
-        if (storyData != null) {
-//            db.collection("stories")
-//                .add(storyData)
-//                .addOnSuccessListener {
-//                    showFeedback("Story submitted successfully!", true)
-//                    clearInputs()
-//                }
-//                .addOnFailureListener { e ->
-//                    showFeedback("Error: ${e.message}", false)
-//                    binding.submitButton.isEnabled = true
-//                }
-            viewModel.addStory(binding.categoryDropdown.text.toString(), storyData)
-        } else {
-            Toast.makeText(context, "No Data Found", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-//    private fun showFeedback(message: String, isSuccess: Boolean) {
-//        binding.feedbackText.apply {
-//            text = message
-//            setTextColor(
-//                ContextCompat.getColor(
-//                    requireContext(),
-//                    if (isSuccess) android.R.color.holo_green_dark
-//                    else android.R.color.holo_red_dark
-//                )
-//            )
-//            visibility = View.VISIBLE
-//        }
-//    }
-//
-//    private fun clearInputs() {
-//        binding.emailInput.text?.clear()
-//        binding.categoryDropdown.text?.clear()
-//        binding.storyInput.text?.clear()
-//        binding.submitButton.isEnabled = true
-//    }
 }

@@ -78,6 +78,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
     implementation("androidx.fragment:fragment-ktx:1.8.5")
     implementation("com.airbnb.android:lottie:6.4.1")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 //app testing
 
 }
