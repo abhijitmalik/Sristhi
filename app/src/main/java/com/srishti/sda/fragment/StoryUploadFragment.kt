@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -71,21 +72,26 @@ class StoryUploadFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding=FragmentStoryUploadBinding.inflate(inflater, container, false)
+        binding = FragmentStoryUploadBinding.inflate(inflater, container, false)
         Toast.makeText(context, "Upload Fragment", Toast.LENGTH_SHORT).show()
 
 
-      //  return inflater.inflate(R.layout.fragment_story_upload, container, false)
+        //  return inflater.inflate(R.layout.fragment_story_upload, container, false)
         val sharedPref = requireActivity().getSharedPreferences("UserPrefs", MODE_PRIVATE)
         val userName = sharedPref.getString("user_name", "No Name")
         val userEmail = sharedPref.getString("user_email", "No Email")
         binding.emailInput.setText(userEmail)
         // Initialize Cloudinary
-        CloudinaryHelper.init(context)
+        try {
 
-       binding.pickImageButton.setOnClickListener(){
-           openGallery()
-       }
+            CloudinaryHelper.init(context)
+        }catch (e:Exception){
+            Log.d("Error",e.message.toString())
+        }
+
+        binding.pickImageButton.setOnClickListener() {
+            openGallery()
+        }
         // Observe Upload Status
         viewModel.uploadStatus.observe(viewLifecycleOwner) { result ->
             result.onSuccess {
@@ -137,14 +143,10 @@ class StoryUploadFragment : Fragment() {
                     )
                 )
             ) {
-              //  submitStory()
+                //  submitStory()
                 UploadImageToClodnary();
-
-
             }
         }
-
-
         return binding.root
     }
 
@@ -154,15 +156,16 @@ class StoryUploadFragment : Fragment() {
     }
 
 
-    private val galleryLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK && result.data != null) {
-            selectedImageUri = result.data?.data
-            context?.let { Glide.with(it).load(selectedImageUri).into(binding.imagePreView) }
+    private val galleryLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK && result.data != null) {
+                selectedImageUri = result.data?.data
+                context?.let { Glide.with(it).load(selectedImageUri).into(binding.imagePreView) }
+            }
         }
-    }
 
 
-    private  fun UploadImageToClodnary(){
+    private fun UploadImageToClodnary() {
 
         if (binding.imagePreView.drawable != null) {
             // Get Bitmap from ImageView
@@ -173,24 +176,28 @@ class StoryUploadFragment : Fragment() {
 
             if (imageFile != null) {
                 // Upload image to Cloudinary
-                CloudinaryHelper.uploadImage(context, Uri.fromFile(imageFile), object : CloudinaryHelper.CloudinaryUploadCallback {
-                    override fun onSuccess(publicId: String, imageUrl: String) {
-                        uploadedImageId = publicId
-                        requireActivity().runOnUiThread {
-                            Toast.makeText(context, "Image Upload Success!", Toast.LENGTH_SHORT).show()
-                            submitStory()
+                CloudinaryHelper.uploadImage(
+                    context,
+                    Uri.fromFile(imageFile),
+                    object : CloudinaryHelper.CloudinaryUploadCallback {
+                        override fun onSuccess(publicId: String, imageUrl: String) {
+                            uploadedImageId = publicId
+                            requireActivity().runOnUiThread {
+                                Toast.makeText(context, "Image Upload Success!", Toast.LENGTH_SHORT)
+                                    .show()
+                                submitStory()
 
+
+                            }
 
                         }
 
-                    }
-
-                    override fun onFailure(errorMessage: String) {
-                        requireActivity().runOnUiThread {
-                            Toast.makeText(context, "Upload Failed!", Toast.LENGTH_SHORT).show()
+                        override fun onFailure(errorMessage: String) {
+                            requireActivity().runOnUiThread {
+                                Toast.makeText(context, "Upload Failed!", Toast.LENGTH_SHORT).show()
+                            }
                         }
-                    }
-                })
+                    })
             } else {
                 Toast.makeText(context, "Error converting image.", Toast.LENGTH_SHORT).show()
             }
@@ -202,7 +209,11 @@ class StoryUploadFragment : Fragment() {
 
     private fun convertBitmapToFile(bitmap: Bitmap): File? {
         return try {
-            val file = File.createTempFile("image_", ".jpg", context?.cacheDir ?: return null) // Directly use cacheDir
+            val file = File.createTempFile(
+                "image_",
+                ".jpg",
+                context?.cacheDir ?: return null
+            ) // Directly use cacheDir
             FileOutputStream(file).use { fos ->
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos) // Compress Bitmap to JPEG
                 fos.flush()
@@ -215,11 +226,11 @@ class StoryUploadFragment : Fragment() {
     }
 
 
-
     private fun submitStory() {
         val sharedPref = requireActivity().getSharedPreferences("UserPrefs", MODE_PRIVATE)
         val userName = sharedPref.getString("user_name", "No Name") as String
-        val imageUrl:String? ="https://res.cloudinary.com/dwbnwxau1/image/upload/"+uploadedImageId+".jpg" //dwbnwxau1-->base name
+        val imageUrl: String? =
+            "https://res.cloudinary.com/dwbnwxau1/image/upload/" + uploadedImageId + ".jpg" //dwbnwxau1-->base name
 
         val storyData =
             imageUrl?.let {
@@ -245,15 +256,6 @@ class StoryUploadFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment StoryUploadFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             StoryUploadFragment().apply {

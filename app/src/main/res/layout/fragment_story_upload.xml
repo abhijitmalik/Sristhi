@@ -5,124 +5,176 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context="com.srishti.sda.fragment.StoryUploadFragment">
+
+    <include layout="@layout/upload_top_bar" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Share Your Story"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Unleash your creativity and inspire others"
-            android:textAlignment="center"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="16sp" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_130mdp"
+                android:layout_marginHorizontal="@dimen/_10mdp"
+                app:cardCornerRadius="@dimen/_10mdp"
+                app:cardElevation="@dimen/_5mdp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/emailInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:hint="Enter Your Email">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/emailInput"
+                    <ImageView
+                        android:id="@+id/imagePreView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/story1" />
+
+                    <ImageView
+                        android:id="@+id/pickImageButton"
+                        android:layout_width="@dimen/_30mdp"
+                        android:layout_height="@dimen/_30mdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="@dimen/_4mdp"
+                        android:src="@drawable/gallery" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="24dp"
+                android:hint="Enter Your Email"
+                app:hintTextColor="@color/hint_text">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/categoryInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Select Category">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/heavy"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/secondary_text"
+                    android:textColorHint="@color/hint_text" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <AutoCompleteTextView
-                android:id="@+id/categoryDropdown"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/categoryInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="16dp"
+                android:hint="Select Category"
+                app:hintTextColor="@color/hint_text">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/storyInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Begin writing your story here...">
+                <AutoCompleteTextView
+                    android:id="@+id/categoryDropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/heavy"
+                    android:inputType="none"
+                    android:textColor="@color/secondary_text"
+                    android:textColorHint="@color/hint_text" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/storyInput"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/storyTitleLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="top"
-                android:inputType="textMultiLine"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:orientation="vertical"
-           android:layout_height="wrap_content">
-           <Button
-               android:id="@+id/pickImageButton"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="Pick Image" />
+                android:layout_marginTop="16dp"
+                android:hint="Story Title Here..."
+                app:hintTextColor="@color/hint_text">
 
-           <ImageView
-               android:id="@+id/imagePreView"
-               android:layout_width="match_parent"
-               android:layout_height="@dimen/_100mdp"
-               android:scaleType="centerCrop"
-               android:layout_marginTop="10dp" />
-       </LinearLayout>
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/submitButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:padding="12dp"
-            android:text="Submit Your Story"
-            android:textSize="16sp"
-            app:cornerRadius="20dp"
-            app:backgroundTint="@color/orange"
-            app:strokeColor="@color/orange"
-            app:rippleColor="@color/white"
-            android:textColor="@color/white" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/storyTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/heavy"
+                    android:gravity="top"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textColor="@color/secondary_text"
+                    android:textColorHint="@color/hint_text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/storyInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:hintTextColor="@color/hint_text"
+                android:hint="Begin writing your story here...">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/storyInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/heavy"
+                    android:gravity="top"
+                    android:textColorHint="@color/hint_text"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/secondary_text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="vertical">-->
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/pickImageButton"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="Pick Image" />-->
+
+            <!--                <ImageView-->
+            <!--                    android:id="@+id/imagePreView"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="@dimen/_100mdp"-->
+            <!--                    android:layout_marginTop="10dp"-->
+            <!--                    android:scaleType="centerCrop" />-->
+            <!--            </LinearLayout>-->
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/submitButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/fredokaone_regular"
+                android:padding="12dp"
+                android:text="Submit Your Story"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14font_mdp"
+                app:backgroundTint="@color/orange"
+                app:cornerRadius="@dimen/_10mdp"
+                app:rippleColor="@color/white"
+                app:strokeColor="@color/orange" />
 
 
-        <TextView
-            android:id="@+id/feedbackText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            android:visibility="gone" />
+            <TextView
+                android:id="@+id/feedbackText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:visibility="gone" />
 
-    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

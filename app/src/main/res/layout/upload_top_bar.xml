@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_75mdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/secondary_text"
+    app:cardElevation="@dimen/_3mdp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_6mdp">
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/_8mdp"
+            android:text="Share Your Story"
+            android:fontFamily="@font/fredokaone_regular"
+            android:textAlignment="center"
+            android:textColor="@color/light_white"
+            android:textSize="@dimen/_20font_mdp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/heavy"
+            android:text="Unleash your creativity and inspire others"
+            android:textAlignment="center"
+            android:textColor="@color/light_white"
+            android:textSize="@dimen/_13font_mdp" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

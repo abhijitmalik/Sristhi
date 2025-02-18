@@ -9,6 +9,7 @@
         <item name="android:statusBarColor">@android:color/darker_gray</item>
         <item name="colorPrimary">@color/orange</item>
         <item name="colorSecondary">@color/green</item>
+        <item name="colorOnSecondary">@color/secondary_text</item>
     </style>
 <!--    <style name="Widget.FAB.Custom" parent="Widget.MaterialComponents.FloatingActionButton">-->
 <!--        <item name="android:tint">@color/black</item> &lt;!&ndash; Change to your icon color &ndash;&gt;-->
