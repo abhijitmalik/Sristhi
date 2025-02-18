@@ -9,6 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.srishti.sda.adapter.BookAdapter
 import com.srishti.sda.fragment.HomeFragment
 import com.srishti.sda.fragment.ProfileFragment
+import com.srishti.sda.fragment.StoryUploadFragment
 import com.srishti.sda.fragment.UploadFragment
 import com.srishti.sda.fragments.CatagoryFragment
 import com.srishti.sda.model.Book
@@ -73,7 +74,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home -> loadFragment(HomeFragment())
                 R.id.nav_search -> loadFragment(CatagoryFragment())
                 R.id.nav_library -> loadFragment(ProfileFragment())
-                R.id.nav_profile -> loadFragment(UploadFragment())
+                R.id.nav_profile -> loadFragment(StoryUploadFragment())
             }
             true
         }

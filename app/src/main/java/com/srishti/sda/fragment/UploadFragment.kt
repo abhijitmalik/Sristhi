@@ -2,30 +2,22 @@ package com.srishti.sda.fragment
 
 
 import android.annotation.SuppressLint
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.EditText
-
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.srishti.sda.R
-import com.srishti.sda.adapter.CategoryAdapter
 import com.srishti.sda.adapter.StoryCategoryAdapter
 import com.srishti.sda.databinding.FragmentUploadBinding
-import com.srishti.sda.model.StoryDataModel
-import com.srishti.sda.utils.Constants.Companion.categories
-import com.srishti.sda.utils.Helper.Companion.checkInputFields
-import com.srishti.sda.utils.Helper.Companion.clearInputFields
-import com.srishti.sda.utils.Helper.Companion.getCurrentDate
-import com.srishti.sda.utils.Helper.Companion.showPopUp
 import com.srishti.sda.viewModel.StoryViewModel
 
 class UploadFragment : Fragment() {
@@ -37,7 +29,13 @@ class UploadFragment : Fragment() {
 //    private lateinit var feedbackText: TextView
     private lateinit var binding: FragmentUploadBinding
     private val viewModel: StoryViewModel by viewModels()
-
+    private val imageView: ImageView? = null
+    private val imageIdEditText: EditText? = null
+    private val pickImageButton: Button? = null
+    private var uploadImageButton: android.widget.Button? = null
+    private var loadImageButton: android.widget.Button? = null
+    private val selectedImageUri: Uri? = null
+    private val uploadedImageId: String? = null
     // Setup category dropdown
 
     override fun onCreateView(

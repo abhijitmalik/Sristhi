@@ -81,4 +81,15 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 //app testing
 
+    implementation ("com.cloudinary:cloudinary-android:2.3.1")
+
+
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
+
+
+
+
+
+
 }

@@ -7,4 +7,5 @@ data class StoryDataModel(
     var likes: String = "",
     var id: String = "",
     var author: String = "",
+    var ImageUrl: String = "",
 )

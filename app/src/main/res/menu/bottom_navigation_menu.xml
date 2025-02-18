@@ -3,19 +3,19 @@
 
     <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/ic_google"
+        android:icon="@drawable/home"
         android:title="@string/home" />
     <item
         android:id="@+id/nav_search"
-        android:icon="@drawable/ic_google"
+        android:icon="@drawable/category"
         android:title="Catagory" />
     <item
         android:id="@+id/nav_profile"
-        android:icon="@drawable/ic_google"
+        android:icon="@drawable/send"
         android:title="update" />
     <item
         android:id="@+id/nav_library"
-        android:icon="@drawable/ic_google"
+        android:icon="@drawable/user"
         android:title="profile" />
 
    <!-- <item
