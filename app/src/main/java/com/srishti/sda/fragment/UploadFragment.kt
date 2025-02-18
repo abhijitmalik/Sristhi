@@ -21,7 +21,7 @@ import com.srishti.sda.databinding.FragmentUploadBinding
 import com.srishti.sda.viewModel.StoryViewModel
 
 class UploadFragment : Fragment() {
-    //updated
+    //update
 //    private lateinit var emailInput: TextInputEditText
 //    private lateinit var categoryDropdown: AutoCompleteTextView
 //    private lateinit var storyInput: TextInputEditText
