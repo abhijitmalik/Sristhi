@@ -88,6 +88,7 @@ dependencies {
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
 
 
+    implementation ("com.google.android.gms:play-services-base:18.5.0")
 
 
 

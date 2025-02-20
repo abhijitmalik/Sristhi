@@ -4,37 +4,123 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.srishti.sda.viewModel.StoryViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:orientation="vertical"
-        tools:context=".HomeFragment">
+        android:background="@color/white">
 
-        <include
-            android:id="@+id/top_bar"
-            layout="@layout/top_bar_lay" />
-
-        <include
-            android:id="@+id/lay_search"
-            layout="@layout/search_lay" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:paddingHorizontal="@dimen/_7mdp"
-            android:id="@+id/rv_category"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <FrameLayout
-            android:id="@+id/fragment_container"
-            android:layout_marginTop="@dimen/_6mdp"
-            android:layout_marginBottom="@dimen/_3mdp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/top_bar"
+                layout="@layout/top_bar_lay" />
+
+            <include
+                android:id="@+id/lay_search"
+                layout="@layout/search_lay" />
+
+            <!-- Categories Section -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingHorizontal="@dimen/_7mdp"
+                android:paddingVertical="@dimen/_8mdp"/>
+
+            <!-- Featured Stories Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12mdp"
+                android:layout_marginTop="@dimen/_16mdp"
+                android:text="Featured Stories"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_18font_mdp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_featured_stories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_7mdp"
+                android:paddingVertical="@dimen/_8mdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+            <!-- Trending Stories Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12mdp"
+                android:layout_marginTop="@dimen/_16mdp"
+                android:text="Trending Stories"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_18font_mdp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_trending_stories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_7mdp"
+                android:paddingVertical="@dimen/_8mdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+            <!-- Recent Publications Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12mdp"
+                android:layout_marginTop="@dimen/_16mdp"
+                android:text="Recent Publications"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_18font_mdp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_recent_publications"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_7mdp"
+                android:paddingVertical="@dimen/_8mdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+            <!-- Editor's Choice Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12mdp"
+                android:layout_marginTop="@dimen/_16mdp"
+                android:text="Editor's Choice"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_18font_mdp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_editors_choice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_7mdp"
+                android:paddingVertical="@dimen/_8mdp"
+                android:layout_marginBottom="@dimen/_16mdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

@@ -8,6 +8,7 @@
     <color name="hint_text">#B72D3436</color>
     <color name="secondary_text">#636E72</color>
     <color name="orange">#CDFF5722</color>
+    <color name="theme_color">#CDFF5722</color>
     <color name="green">#32CCBE</color>
     <color name="green_light">#75DCD3</color>
     <color name="orange_light">#DB7657</color>

@@ -1,37 +1,68 @@
 package com.srishti.sda.adapter
 
-
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.srishti.sda.R
-import com.srishti.sda.fragment.Story
+import com.bumptech.glide.Glide
+import com.srishti.sda.databinding.ItemStoryBinding
+import com.srishti.sda.model.Story
+import java.text.SimpleDateFormat
+import java.util.Locale
 
-class StoryAdapter(private val stories: List<Story>) :
-    RecyclerView.Adapter<StoryAdapter.StoryViewHolder>() {
+class StoryAdapter(private val storyType: Int) : RecyclerView.Adapter<StoryAdapter.StoryViewHolder>() {
 
-    class StoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val authorTextView: TextView = view.findViewById(R.id.authorTextView)
-        val likesTextView: TextView = view.findViewById(R.id.likesTextView)
-        val storyTextView: TextView = view.findViewById(R.id.storyTextView)
+    private var stories = mutableListOf<Story>()
+
+    companion object {
+        const val FEATURED = 1
+        const val TRENDING = 2
+        const val RECENT = 3
+        const val EDITORS_CHOICE = 4
+    }
+
+    inner class StoryViewHolder(private val binding: ItemStoryBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(story: Story) {
+            binding.apply {
+                storyTitle.text = story.title
+                storyPreview.text = story.content
+                authorName.text = story.authorName
+                storyCategory.text = story.category
+                storyDate.text = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
+                    .format(story.publishDate)
+
+                // Load image using Glide
+                Glide.with(itemView.context)
+                    .load(story.imageUrl)
+                    .centerCrop()
+                    .into(storyImage)
+
+                // Handle like button click
+                btnLike.setOnClickListener {
+                    // Implement like functionality
+                }
+
+                // Handle share button click
+                btnShare.setOnClickListener {
+                    // Implement share functionality
+                }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoryViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_story, parent, false)
-        return StoryViewHolder(view)
+        val binding = ItemStoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return StoryViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: StoryViewHolder, position: Int) {
-        val story = stories[position]
-        holder.authorTextView.text = "Author: ${story.author}"
-        holder.likesTextView.text = "Likes: ${story.likes}"
-        holder.storyTextView.text = story.story
+        holder.bind(stories[position])
     }
 
-    override fun getItemCount(): Int {
-        return stories.size
+    override fun getItemCount() = stories.size
+
+    fun updateStories(newStories: List<Story>) {
+        stories.clear()
+        stories.addAll(newStories)
+        notifyDataSetChanged()
     }
 }

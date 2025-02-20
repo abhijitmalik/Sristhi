@@ -36,7 +36,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/_10mdp"
-            android:src="@drawable/icon_new" />
+            android:src="@drawable/ic_google" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

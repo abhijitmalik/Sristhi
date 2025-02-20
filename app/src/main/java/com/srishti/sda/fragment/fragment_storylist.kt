@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.srishti.sda.R
-import com.srishti.sda.adapter.StoryAdapter
+import com.srishti.sda.adapter.StoryListAdapter
 
 class fragment_storylist : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: StoryAdapter
+    private lateinit var adapter: StoryListAdapter
     private val db = FirebaseFirestore.getInstance()
     private val storiesList = mutableListOf<Story>()
     private var selectedCategory: String? = null
@@ -32,7 +32,7 @@ class fragment_storylist : Fragment() {
         selectedCategory = arguments?.getString("category")
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        adapter = StoryAdapter(storiesList)
+        adapter = StoryListAdapter()
         recyclerView.adapter = adapter
 
         fetchBiographiesStories(selectedCategory)
@@ -48,12 +48,14 @@ class fragment_storylist : Fragment() {
                     val story = Story(
                         author = document.getString("author") ?: "Unknown",
                         likes = document.getLong("likes")?.toInt() ?: 0,
-                        story = document.getString("story") ?: "No story available"
+                        story = document.getString("story") ?: "No story available",
+                        ImageURL = document.getString("ImageURL") ?: "No Image available",//"https://res.cloudinary.com/dwbnwxau1/image/upload/android_uploads/wpb9wjvqbybqw9o7otou.jpg",
+
                     )
                     Log.e("Story", "Author: ${story.author}, Likes: ${story.likes}, Story: ${story.story}")
                     storiesList.add(story)
                 }
-                adapter.notifyDataSetChanged()
+                adapter.updateStories(storiesList)
             }
             .addOnFailureListener { e ->
                 Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
@@ -64,5 +66,6 @@ class fragment_storylist : Fragment() {
 data class Story(
     val author: String,
     val likes: Int,
-    val story: String
+    val story: String,
+    val ImageURL: String,
 )

@@ -3,18 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
 
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <application
         android:name=".SrishtiApplication"
         android:allowBackup="true"
@@ -27,20 +26,25 @@
         android:theme="@style/Theme.Srishti_App"
         tools:targetApi="35">
         <activity
-            android:name=".UserProfile"
-            android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".Profile"-->
-<!--            android:exported="false" />-->
-        <activity
             android:name=".SplashActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Srishti_App.NoActionBar">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".UserProfile"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".Profile" -->
+        <!-- android:exported="false" /> -->
+        <activity
+            android:name=".TestActivity"
+
+            android:exported="true"
+            android:theme="@style/Theme.Srishti_App.NoActionBar">
+
         </activity>
         <activity
             android:name=".MainActivity"

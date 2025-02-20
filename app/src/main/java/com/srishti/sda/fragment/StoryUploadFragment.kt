@@ -21,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.srishti.sda.R
 import com.srishti.sda.cloudinary.CloudinaryHelper
 import com.srishti.sda.databinding.FragmentStoryUploadBinding
@@ -49,6 +51,9 @@ class StoryUploadFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+
+
 
     lateinit var binding: FragmentStoryUploadBinding
     private val viewModel: StoryViewModel by viewModels()
@@ -147,7 +152,32 @@ class StoryUploadFragment : Fragment() {
                 UploadImageToClodnary();
             }
         }
+
+        fetchStories()
+
+
         return binding.root
+    }
+
+    private fun fetchStories() {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("stories")
+            //.orderBy("posted", Query.Direction.DESCENDING)  // Sorting in Descending Order
+            .get()
+            .addOnSuccessListener { documents ->
+
+                for (document in documents) {
+                    val story = document.toObject(Story::class.java)
+                    //storyList.add(story)
+
+                    Log.e("story","${story.story}")
+                }
+
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                Log.e("Error1", "Error: ${e.message}")
+            }
     }
 
     private fun openGallery() {

@@ -13,8 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.srishti.sda.R
 import com.srishti.sda.adapter.CategoryAdapter
+import com.srishti.sda.adapter.StoryAdapter
+import com.srishti.sda.adapter.TrendingStoryAdapter
 import com.srishti.sda.databinding.FragmentHomeBinding
 import com.srishti.sda.databinding.TopBarLayBinding
+import com.srishti.sda.viewModel.StoryViewModel
 
 public class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
@@ -24,6 +27,7 @@ public class HomeFragment : Fragment() {
     private var initialY = 0f
     private var dY = 0f
     private val threshold = 300 // Distance to hide the layout
+    private lateinit var viewModel: StoryViewModel
 
     val categories = listOf(
         "All",
@@ -112,7 +116,63 @@ public class HomeFragment : Fragment() {
             topBarLayBinding.searchLay.visibility = View.GONE // Hide button
         }
 
+        viewModel = StoryViewModel(requireContext())
+        setupRecyclerViews()
 
         return binding.root
+    }
+
+    private fun setupRecyclerViews() {
+        val featuredAdapter = StoryAdapter(StoryAdapter.FEATURED)
+        val trendingAdapter = StoryAdapter(StoryAdapter.TRENDING)
+        val recentAdapter = StoryAdapter(StoryAdapter.RECENT)
+        val editorsChoiceAdapter = StoryAdapter(StoryAdapter.EDITORS_CHOICE)
+
+        // Featured Stories
+        binding.rvFeaturedStories.apply {
+            adapter = featuredAdapter
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        }
+
+        // Trending Stories
+        binding.rvTrendingStories.apply {
+            adapter = trendingAdapter
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        }
+
+        // Recent Publications
+        binding.rvRecentPublications.apply {
+            adapter = recentAdapter
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        }
+
+        // Editor's Choice
+        binding.rvEditorsChoice.apply {
+            adapter = editorsChoiceAdapter
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        }
+
+        // Observe LiveData
+        viewModel.featuredStories.observe(viewLifecycleOwner) { stories ->
+            featuredAdapter.updateStories(stories)
+        }
+
+        viewModel.trendingStories.observe(viewLifecycleOwner) { stories ->
+            trendingAdapter.updateStories(stories)
+        }
+
+        viewModel.recentStories.observe(viewLifecycleOwner) { stories ->
+            recentAdapter.updateStories(stories)
+        }
+
+        viewModel.editorsChoice.observe(viewLifecycleOwner) { stories ->
+            editorsChoiceAdapter.updateStories(stories)
+        }
+
+        // Load data from Firebase
+        viewModel.loadFeaturedStories()
+        viewModel.loadTrendingStories()
+        viewModel.loadRecentPublications()
+        viewModel.loadEditorsChoice()
     }
 }

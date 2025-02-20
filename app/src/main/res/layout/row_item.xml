@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/horizontalScroll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/arrangerCode"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="A001"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/arrangerName"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Arranger Name"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/holo_blue_light" />
+
+        <TextView
+            android:id="@+id/sponsorCode"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="S001"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/holo_green_light" />
+
+        <TextView
+            android:id="@+id/rank"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Rank 1"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/holo_orange_light" />
+
+        <TextView
+            android:id="@+id/formNo"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="F001"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/holo_red_light" />
+
+        <TextView
+            android:id="@+id/officeID"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="O001"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/dateOfJoin"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="2024-02-20"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/holo_purple" />
+
+        <TextView
+            android:id="@+id/dateOfEnt"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="2024-02-21"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/holo_blue_dark" />
+
+        <TextView
+            android:id="@+id/arrangerDOB"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="2000-01-01"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/holo_green_dark" />
+
+        <TextView
+            android:id="@+id/voucherNo"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="V001"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/holo_orange_dark" />
+
+        <TextView
+            android:id="@+id/father"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Father Name"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/holo_red_dark" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="123 Main St"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="email@test.com"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/holo_blue_light" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="1234567890"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/holo_green_light" />
+
+        <TextView
+            android:id="@+id/nominee"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Nominee Name"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/holo_orange_light" />
+
+        <TextView
+            android:id="@+id/nomineeDOB"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="2010-01-01"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/holo_red_light" />
+
+        <TextView
+            android:id="@+id/nomineeRelation"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Relation"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:color/darker_gray" />
+
+    </LinearLayout>
+</HorizontalScrollView>

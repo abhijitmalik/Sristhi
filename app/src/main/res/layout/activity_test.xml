@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".TestActivity"
+    android:orientation="vertical">
+
+    <!-- Horizontal Scroll Header -->
+    <HorizontalScrollView
+        android:id="@+id/horizontalHeaderScroll"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scrollbars="none"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/headerLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TextView android:text="ArrangerCode" style="@style/HeaderTextStyle"/>
+            <TextView android:text="ArrangerName" style="@style/HeaderTextStyle"/>
+            <TextView android:text="SponsorCode" style="@style/HeaderTextStyle"/>
+            <TextView android:text="Rank" style="@style/HeaderTextStyle"/>
+            <TextView android:text="FormNo" style="@style/HeaderTextStyle"/>
+            <TextView android:text="OfficeID" style="@style/HeaderTextStyle"/>
+            <TextView android:text="DateOfJoin" style="@style/HeaderTextStyle"/>
+            <TextView android:text="DateOfEnt" style="@style/HeaderTextStyle"/>
+            <TextView android:text="ArrangerDOB" style="@style/HeaderTextStyle"/>
+            <TextView android:text="VoucherNo" style="@style/HeaderTextStyle"/>
+            <TextView android:text="Father" style="@style/HeaderTextStyle"/>
+            <TextView android:text="Address" style="@style/HeaderTextStyle"/>
+            <TextView android:text="Email" style="@style/HeaderTextStyle"/>
+            <TextView android:text="Phone" style="@style/HeaderTextStyle"/>
+            <TextView android:text="Nominee" style="@style/HeaderTextStyle"/>
+            <TextView android:text="NomineeDOB" style="@style/HeaderTextStyle"/>
+            <TextView android:text="NomineeRelation" style="@style/HeaderTextStyle"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- RecyclerView for Data -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false"/>
+</LinearLayout>
