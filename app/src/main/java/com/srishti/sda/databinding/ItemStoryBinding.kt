@@ -1,1 +1,1 @@
-// This will be generated automatically when you enable ViewBinding in your build.gradle file 
+package com.srishti.sda.databinding// This will be generated automatically when you enable ViewBinding in your build.gradle file

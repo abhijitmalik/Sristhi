@@ -24,15 +24,15 @@ class StoryAdapter(private val storyType: Int) : RecyclerView.Adapter<StoryAdapt
         fun bind(story: Story) {
             binding.apply {
                 storyTitle.text = story.title
-                storyPreview.text = story.content
-                authorName.text = story.authorName
+                storyPreview.text = story.story
+                authorName.text = story.author
                 storyCategory.text = story.category
                 storyDate.text = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
-                    .format(story.publishDate)
+                    .format(story.posted)
 
                 // Load image using Glide
                 Glide.with(itemView.context)
-                    .load(story.imageUrl)
+                    .load(story.ImageURL)
                     .centerCrop()
                     .into(storyImage)
 
