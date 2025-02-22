@@ -13,12 +13,11 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
     <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_60mdp"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@color/black"
         app:itemIconTint="@color/bottom_nav_color"

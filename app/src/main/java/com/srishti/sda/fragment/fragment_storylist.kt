@@ -34,7 +34,6 @@ class fragment_storylist : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         adapter = StoryListAdapter()
         recyclerView.adapter = adapter
-
         fetchBiographiesStories(selectedCategory)
     }
 
