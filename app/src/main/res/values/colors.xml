@@ -18,4 +18,35 @@
     <color name="text_tertiary">#61000000</color>
     <color name="light_gray">#1F000000</color>
     <color name="accent">#FF6200EE</color>
+
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="dark_background">#121212</color>
+
+
+
+    <!-- Theme colors referenced in your layout -->
+    <color name="dark_brown">#654321</color>
+
+    <!-- Additional colors for theme selectors -->
+    <color name="light_theme_background">#FFFFFF</color>
+    <color name="light_theme_stroke">#E0E0E0</color>
+
+    <color name="dark_theme_background">#121212</color>
+    <color name="dark_theme_stroke">#303030</color>
+
+    <color name="sepia_theme_background">#F8F1E3</color>
+    <color name="sepia_theme_stroke">#E8D8C0</color>
+
+    <color name="custom_theme_gradient_start">#F5F7FA</color>
+    <color name="custom_theme_gradient_end">#EDF1F7</color>
+    <color name="custom_theme_stroke">#E0E0E0</color>
+
+    <!-- Ripple effect colors -->
+    <color name="light_ripple">#1A000000</color>  <!-- 10% black -->
+    <color name="dark_ripple">#33FFFFFF</color>   <!-- 20% white -->
+
 </resources>
