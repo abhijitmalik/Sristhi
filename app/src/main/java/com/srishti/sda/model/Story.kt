@@ -11,4 +11,10 @@ data class Story(
     val posted: String = "",
     val likes: Int = 0,
     var isLiked: Boolean = false
-) 
+
+)
+
+{
+    // Required empty constructor for Firestore
+    constructor() : this("", "", "", "0", "", "", "")
+}

@@ -374,7 +374,7 @@ class StoryReadingActivity : AppCompatActivity() {
         }
     }
 
-   /* private fun loadStoryData() {
+    private fun loadStoryData() {
         // In a real app, you would load the story from intent or database
         // For now, let's create a dummy story
         currentStory = Story(
@@ -398,39 +398,7 @@ class StoryReadingActivity : AppCompatActivity() {
 
         // Update UI with story data
         updateStoryUI()
-    }*/
-
-    private fun loadStoryData() {
-        // Get data from Intent
-        val intent = intent
-        val title = intent.getStringExtra("title") ?: "Unknown Title"
-        val storyContent = intent.getStringExtra("story") ?: "No Content"
-        val author = intent.getStringExtra("author") ?: "Unknown Author"
-        val category = intent.getStringExtra("category") ?: "Unknown Category"
-        val imageUrl = intent.getStringExtra("imageUrl") ?: ""
-        val likes = intent.getIntExtra("likes", 0)
-        val postedDate = intent.getStringExtra("posted") ?: "Unknown Date"
-
-        // Create a Story object
-        currentStory = Story(
-            id = "story_${System.currentTimeMillis()}", // Generate unique ID
-            title = title,
-            author = author,
-            coverImage = R.drawable.placeholder_image, // If using a URL, you need to load it with Glide/Picasso
-            chapters = listOf(
-                Chapter(
-                    title = title, // Using title as the chapter title
-                    content = storyContent
-                )
-            ),
-            readingTimeMinutes = storyContent.length / 200, // Approximate reading time
-            totalUsers = likes // Using likes as an indicator of total users (modify as needed)
-        )
-
-        // Update UI with story data
-        updateStoryUI()
     }
-
 
     private fun updateStoryUI() {
         currentStory?.let { story ->

@@ -13,8 +13,17 @@ import com.srishti.sda.repository.StoryRepository
 import kotlinx.coroutines.launch
 import com.srishti.sda.model.CategoryWithStories
 
-class StoryViewModel(private val context: Context) : ViewModel() {
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+
+class StoryViewModel(application: Application) : AndroidViewModel(application) {
+    private val context = getApplication<Application>()
+
+    // Rest of your code remains the same
+
+
     private val db = FirebaseFirestore.getInstance()
+
     
     private val _featuredStories = MutableLiveData<List<Story>>()
     val featuredStories: LiveData<List<Story>> = _featuredStories
