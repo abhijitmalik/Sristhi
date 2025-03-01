@@ -148,12 +148,12 @@ class StoryUploadFragment : Fragment() {
                     )
                 )
             ) {
-                //  submitStory()
-                UploadImageToClodnary();
+                  submitStory()
+              //  UploadImageToClodnary();
             }
         }
 
-        fetchStories()
+      //  fetchStories()
 
 
         return binding.root
@@ -167,7 +167,7 @@ class StoryUploadFragment : Fragment() {
             .addOnSuccessListener { documents ->
 
                 for (document in documents) {
-                    val story = document.toObject(Story::class.java)
+                    val story = document.toObject(StoryDataModel::class.java)
                     //storyList.add(story)
 
                     Log.e("story","${story.story}")

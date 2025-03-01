@@ -20,7 +20,7 @@ class StoryRepository {
 //                .await()
             val storyId = UUID.randomUUID().toString()  // Generates a unique ID
 
-            db.collection("All_Story_Data")
+            db.collection("stories")
                 .document(categoryId)
                 .collection("stories")
                 .document(storyId)  // Assign the generated ID
@@ -37,7 +37,7 @@ class StoryRepository {
         val categoryList = mutableListOf<CategoryWithStories>()
         Log.d("dip2","2")
         // Fetch all categories
-        val categoryDocs = db.collection("All_Story_Data").get().await()
+        val categoryDocs = db.collection("stories").get().await()
         Log.d("dip3","3."+categoryDocs.documents)
 
         for (categoryDoc in categoryDocs.documents) {

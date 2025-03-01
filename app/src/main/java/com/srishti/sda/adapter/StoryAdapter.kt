@@ -1,13 +1,16 @@
 package com.srishti.sda.adapter
 
+import android.app.Application
+import android.content.Intent
+import android.provider.Telephony.Mms.Intents
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.srishti.sda.StoryReadingActivity
 import com.srishti.sda.databinding.ItemStoryBinding
 import com.srishti.sda.model.Story
-import java.text.SimpleDateFormat
-import java.util.Locale
+
 
 class StoryAdapter(private val storyType: Int) : RecyclerView.Adapter<StoryAdapter.StoryViewHolder>() {
 
@@ -42,6 +45,20 @@ class StoryAdapter(private val storyType: Int) : RecyclerView.Adapter<StoryAdapt
                 // Handle like button click
                 btnLike.setOnClickListener {
                     // Implement like functionality
+                }
+                storyContentClick.setOnClickListener(){
+
+                    val intent = Intent(itemView.context, StoryReadingActivity::class.java)
+                    intent.putExtra("title", story.title)
+                    intent.putExtra("story", story.story)
+                    intent.putExtra("author", story.author)
+                    intent.putExtra("category", story.category)
+                    intent.putExtra("imageUrl", story.imageUrl)
+                    intent.putExtra("likes", story.likes)
+                    intent.putExtra("posted", story.posted)
+
+                    itemView.context.startActivity(intent)
+
                 }
 
                 // Handle share button click
