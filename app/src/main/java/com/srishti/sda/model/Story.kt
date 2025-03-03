@@ -7,8 +7,14 @@ data class Story(
     val author: String = "",
     val email: String = "",
     val category: String = "",
-    val ImageURL: String = "",
-    val posted: Long = System.currentTimeMillis(),
+    val imageUrl: String = "",
+    val posted: String = "",
     val likes: Int = 0,
     var isLiked: Boolean = false
-) 
+
+)
+
+{
+    // Required empty constructor for Firestore
+    constructor() : this("", "", "", "0", "", "", "")
+}

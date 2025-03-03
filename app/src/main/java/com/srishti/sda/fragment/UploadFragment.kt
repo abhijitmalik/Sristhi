@@ -68,7 +68,7 @@ class UploadFragment : Fragment() {
             }
         }
 
-        // Observe Errors
+        // Observe Error
         viewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
             Log.d("Error", errorMessage)
             Toast.makeText(context, "Unable to show details", Toast.LENGTH_SHORT).show()
@@ -84,6 +84,5 @@ class UploadFragment : Fragment() {
         }
 
     }
-
 
 }

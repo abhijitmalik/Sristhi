@@ -116,7 +116,7 @@ public class HomeFragment : Fragment() {
             topBarLayBinding.searchLay.visibility = View.GONE // Hide button
         }
 
-        viewModel = StoryViewModel(requireContext())
+        viewModel = StoryViewModel(requireActivity().application)
         setupRecyclerViews()
 
         return binding.root

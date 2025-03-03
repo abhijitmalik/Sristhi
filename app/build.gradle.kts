@@ -19,6 +19,8 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -89,7 +91,7 @@ dependencies {
 
 
     implementation ("com.google.android.gms:play-services-base:18.5.0")
-
+    implementation ("com.google.android.material:material:1.12.0")
 
 
 
